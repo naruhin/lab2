@@ -1,6 +1,9 @@
 package com.company.Classes;
+import org.codehaus.jackson.annotate.JsonAutoDetect;
+import java.io.Serializable;
 
-public class Trapeze extends Quadrangle {
+@JsonAutoDetect
+public class Trapeze extends Quadrangle implements  Figure,Serializable{
 
     public Trapeze()
     {

@@ -1,8 +1,10 @@
 package com.company.Classes;
 
+import org.codehaus.jackson.annotate.JsonAutoDetect;
 
-
-public class Quadrangle implements IQuadrangle{
+import java.io.Serializable;
+@JsonAutoDetect
+public class Quadrangle implements IQuadrangle, Figure, Serializable{
 
 
     private String title;

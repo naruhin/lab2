@@ -1,9 +1,6 @@
 package com.company;
+import com.company.Classes.*;
 
-import com.company.Classes.Load;
-import com.company.Classes.Quadrangle;
-import com.company.Classes.Save;
-import com.company.Classes.Trapeze;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -48,17 +45,16 @@ public class Main {
         System.out.println("Прямоугольники - \n " + quadrangles + "------------------------");
         System.out.println("Трапеции - \n"  + trapezes + "--------------------------");
 
-        Save FileSave = new Save();
-        FileSave.save("savefile.txt", quadrangles, trapezes);
+        NativeSerialization.saveFile(quadrangles, trapezes);
+        Figure[] loadData = NativeSerialization.loadFile("Figure.txt");
+        System.out.println("NativeSerialization" + "\n" + "------------");
+        System.out.println("Quadrangle:\n" + loadData[0].toString() + "\n\n" + "Trapeze:\n" + loadData[1].toString() + "\n");
 
-        quadrangles.clear();
-        trapezes.clear();
-        Load FileLoad = new Load();
-        FileLoad.read("savefile.txt", quadrangles, trapezes);
-        System.out.println("Загрузка...");
-        Thread.sleep(1000);
-        System.out.println("Прямоугольники - \n " + quadrangles + "------------------------");
-        System.out.println("Трапеции - \n"  + trapezes + "--------------------------");
+
+        JSONSerialization.saveFile(quadrangles, trapezes);
+        loadData = JSONSerialization.loadFile("Quadrangle.json", "Trapeze.json");
+        System.out.println("JacksonSerialization" + "\n" + "------------");
+        System.out.println("Quadrangle:\n" + loadData[0].toString() + "\n\n" + "Trapeze:\n" + loadData[1].toString());
 
 
 
